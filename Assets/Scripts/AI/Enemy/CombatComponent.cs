@@ -47,4 +47,18 @@ public class CombatComponent : MonoBehaviour
         GameObject projectile = Instantiate(projectileClass, shootLocation.position, transform.rotation);
         projectile.GetComponent<Rigidbody2D>().velocity = (targetPos - transform.position) * projectileSpeed;
     }
+
+    // Method used for flipping target location
+    public void TargetLocationFlipped(bool isFlipped)
+    {
+        // Get horizontal distance between object and shoot loc
+        Vector3 diff = gameObject.transform.position - new Vector3(shootLocation.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
+        float distance = diff.magnitude;
+
+        // Offset X value if flipped
+        if (isFlipped)
+            shootLocation.position = gameObject.transform.position + new Vector3(-distance, 0.0f, 0.0f);
+        else // Otherwise make sure its on the original side
+            shootLocation.position = gameObject.transform.position + new Vector3(distance, 0.0f, 0.0f);
+    }
 }

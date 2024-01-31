@@ -26,14 +26,23 @@ public class AttackingState : BaseState<EnemyStateMachine.EnemyStates>
     // Handler for state update ticks
     public override void UpdateState()
     {
-        // Turn to face the target
-        Vector3 diff = FSM.target.position - FSM.gameObject.transform.position;
-        diff.Normalize();
-        float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
-        FSM.gameObject.transform.rotation = Quaternion.Euler(0f, 0f, rot_z + 180);
+        // Get combat controls
+        CombatComponent combatControls = FSM.CombatControls;
+
+        // Set enemy to face target
+        SpriteRenderer spriteRenderer = FSM.SpriteRenderer;
+        if (FSM.target.position.x < FSM.gameObject.transform.position.x)
+        {
+            spriteRenderer.flipX = true;
+            combatControls.TargetLocationFlipped(true);
+        }
+        else
+        {
+            spriteRenderer.flipX = false;
+            combatControls.TargetLocationFlipped(false);
+        }
 
         // Try launching a projectile
-        CombatComponent combatControls = FSM.CombatControls;
         combatControls.LaunchProjectile(FSM.target.position);
     }
 
@@ -43,7 +52,7 @@ public class AttackingState : BaseState<EnemyStateMachine.EnemyStates>
         // Check distance between transform and if not close enough 
         // transfer into idle state
         if (Vector3.Distance(FSM.target.position, FSM.transform.position) >= 4.0f)
-            return EnemyStateMachine.EnemyStates.Idle;
+            return EnemyStateMachine.EnemyStates.Moving;
 
         return EnemyStateMachine.EnemyStates.Attacking;
     }

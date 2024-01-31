@@ -15,6 +15,8 @@ public class EnemyStateMachine : StateMachine<EnemyStateMachine.EnemyStates>
 
     // Private fields
     CombatComponent _CombatControls;
+    SpriteRenderer _SpriteRenderer;
+    AIMovementComponent _MovementControls;
 
     // Public fields
     public Transform target;
@@ -23,6 +25,14 @@ public class EnemyStateMachine : StateMachine<EnemyStateMachine.EnemyStates>
     public CombatComponent CombatControls
     {
         get { return _CombatControls; }
+    }
+    public SpriteRenderer SpriteRenderer
+    {
+        get { return _SpriteRenderer; }
+    }
+    public AIMovementComponent MovementControls
+    {
+        get { return _MovementControls; }
     }
 
 
@@ -33,15 +43,18 @@ public class EnemyStateMachine : StateMachine<EnemyStateMachine.EnemyStates>
 
         // Fill the dictionary with needed states
         states[EnemyStates.Idle] = new IdleState();
+        states[EnemyStates.Moving] = new MovingState();
         states[EnemyStates.Attacking] = new AttackingState();
 
         // Default state will be wandering
-        currentState = states[EnemyStates.Idle];
+        currentState = states[EnemyStates.Moving];
     }
 
     // Initialize the state machine's fields and components
     void Init()
     {
         _CombatControls = GetComponent<CombatComponent>();
+        _SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        _MovementControls = GetComponent<AIMovementComponent>();
     }
 }
