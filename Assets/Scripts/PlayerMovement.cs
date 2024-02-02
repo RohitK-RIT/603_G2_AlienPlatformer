@@ -9,9 +9,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float speed = 5f;
     [SerializeField] float jumpForce = 12f;
 
+    CombatComponent _CombatControls;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        _CombatControls = GetComponent<CombatComponent>();
     }
 
     void LateUpdate()
@@ -32,5 +35,12 @@ public class PlayerMovement : MonoBehaviour
         // Movement
         float horizontal = Input.GetAxis("Horizontal");
         transform.Translate(Vector3.right * horizontal * speed * Time.deltaTime);
+
+        // Update location of projectile spawn
+        // based on movement direction
+        if (horizontal > 0.1f)
+            _CombatControls.TargetLocationFlipped(false);
+        else if(horizontal < -0.1f)
+            _CombatControls.TargetLocationFlipped(true);
     }
 }

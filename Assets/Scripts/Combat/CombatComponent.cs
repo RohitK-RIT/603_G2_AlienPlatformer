@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CombatComponent : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class CombatComponent : MonoBehaviour
     // Public fields
     public Transform shootLocation;
     public float projectileSpeed = 2.0f;
+    public float health = 100.0f;
 
     // Fields for handling cooldown timer
     public float projectileCooldown = 1.0f;
@@ -45,7 +47,7 @@ public class CombatComponent : MonoBehaviour
 
         // Instantiate the projectile and set its velocity
         GameObject projectile = Instantiate(projectileClass, shootLocation.position, transform.rotation);
-        projectile.GetComponent<Rigidbody2D>().velocity = (targetPos - transform.position) * projectileSpeed;
+        projectile.GetComponentInChildren<Rigidbody2D>().velocity = (targetPos - transform.position) * projectileSpeed;
     }
 
     // Method used for flipping target location
@@ -60,5 +62,28 @@ public class CombatComponent : MonoBehaviour
             shootLocation.position = gameObject.transform.position + new Vector3(-distance, 0.0f, 0.0f);
         else // Otherwise make sure its on the original side
             shootLocation.position = gameObject.transform.position + new Vector3(distance, 0.0f, 0.0f);
+    }
+
+    // Method called for handling damage of this object
+    public void TakeDamage(float damage)
+    {
+        // Negate health
+        health -= damage;
+
+        // Death handling
+        if(health <= 0.0f)
+        {
+            // For the player
+            if(gameObject.tag == "Player")
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+
+            // For enemies
+            if (gameObject.tag == "Enemy")
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 }
