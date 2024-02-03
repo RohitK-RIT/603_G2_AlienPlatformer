@@ -22,7 +22,12 @@ public class PlayerMovement : MonoBehaviour
         // Jump
         if (hasJump && (Input.GetAxis("Vertical") > 0 || Input.GetKeyDown(KeyCode.Space)))
         {
-            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            // Check gravity scale direction
+            float jumpDirection = 1.0f;
+            if (rb.gravityScale < 0.0f)
+                jumpDirection = -1.0f;
+
+            rb.AddForce(Vector2.up * jumpForce * jumpDirection, ForceMode2D.Impulse);
             hasJump = false;
         }
 

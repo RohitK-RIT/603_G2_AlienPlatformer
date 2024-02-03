@@ -51,7 +51,7 @@ public class AttackingState : BaseState<EnemyStateMachine.EnemyStates>
     {
         // Check distance between transform and if not close enough 
         // transfer into idle state
-        if (Vector3.Distance(FSM.target.position, FSM.transform.position) >= 4.0f)
+        if (Vector3.Distance(FSM.target.position, FSM.transform.position) >= 6.0f)
             return EnemyStateMachine.EnemyStates.Moving;
 
         return EnemyStateMachine.EnemyStates.Attacking;

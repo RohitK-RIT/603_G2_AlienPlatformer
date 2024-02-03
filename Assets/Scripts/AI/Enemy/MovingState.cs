@@ -38,7 +38,7 @@ public class MovingState : BaseState<EnemyStateMachine.EnemyStates>
     {
         // Check distance between transform and if close enough 
         // transfer into attack state
-        if (Vector3.Distance(FSM.target.position, FSM.transform.position) <= 4.0f)
+        if (Vector3.Distance(FSM.target.position, FSM.transform.position) <= 6.0f)
             return EnemyStateMachine.EnemyStates.Attacking;
 
         return EnemyStateMachine.EnemyStates.Moving;

@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GreyboxLevel.unity
     guid: 7850b2b8958d9ff449792a9c4f3c2aeb
+  - enabled: 1
+    path: Assets/Scenes/Setup/Tilemap Setup.unity
+    guid: 1bb69eb14fc0e9e45af560f20b3fd673
   m_configObjects: {}

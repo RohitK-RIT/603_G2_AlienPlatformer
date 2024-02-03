@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 2918160595431152720}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,6 +99,7 @@ MonoBehaviour:
   projectileClass: {fileID: 7421145480655589121, guid: 7d77b4e8d6b825447be1e098e806509b, type: 3}
   shootLocation: {fileID: 8271207892785662650}
   projectileSpeed: 2
+  health: 100
   projectileCooldown: 1
 --- !u!50 &1707224693601702965
 Rigidbody2D:
@@ -176,8 +177,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.007870436, y: -0.05509305}
-  m_Size: {x: 1.2083397, y: 2.0546389}
+  m_Offset: {x: 0.007870436, y: -0.1351158}
+  m_Size: {x: 1.2083397, y: 1.8945934}
   m_Direction: 0
 --- !u!114 &2918160595431152720
 MonoBehaviour:
