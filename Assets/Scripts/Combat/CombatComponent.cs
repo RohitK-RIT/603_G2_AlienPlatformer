@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class CombatComponent : MonoBehaviour
 {
+    public RectTransform healthBar;
     // Class references to be passed in
     public GameObject projectileClass;
 
@@ -12,6 +14,7 @@ public class CombatComponent : MonoBehaviour
     public Transform shootLocation;
     public float projectileSpeed = 2.0f;
     public float health = 100.0f;
+    public float NormalizedHealth => health / 100f;
 
     // Fields for handling cooldown timer
     public float projectileCooldown = 1.0f;
@@ -69,6 +72,8 @@ public class CombatComponent : MonoBehaviour
     {
         // Negate health
         health -= damage;
+        if(healthBar)
+            healthBar.localScale = new Vector2(NormalizedHealth, 1f); 
 
         // Death handling
         if(health <= 0.0f)
