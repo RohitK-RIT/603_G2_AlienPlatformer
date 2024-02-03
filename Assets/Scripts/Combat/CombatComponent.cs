@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class CombatComponent : MonoBehaviour
 {
     public RectTransform healthBar;
+
     // Class references to be passed in
     public GameObject projectileClass;
 
