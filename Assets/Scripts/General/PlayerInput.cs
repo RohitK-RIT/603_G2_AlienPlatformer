@@ -6,12 +6,14 @@ public class PlayerInput : MonoBehaviour
 {
     // Declare component references
     CombatComponent _CombatControls;
+    PlayerAnimationHandler _AnimControls;
 
     // Start is called before the first frame update
     void Start()
     {
         // Initialize any component references or fields here
         _CombatControls = GetComponent<CombatComponent>();
+        _AnimControls = GetComponent<PlayerAnimationHandler>();
     }
 
     // Update is called once per frame
@@ -20,7 +22,13 @@ public class PlayerInput : MonoBehaviour
         // Shoot functionality
         if(Input.GetKeyDown(KeyCode.Mouse0))
         {
-            _CombatControls.LaunchProjectile(gameObject.transform.position + (_CombatControls.shootLocation.position - gameObject.transform.position));
+            _AnimControls.PlayAttack();
         }
+    }
+
+    // Method that is called once it is time for projectile to launch
+    public void EventLaunchProjectile()
+    {
+        _CombatControls.LaunchProjectile(gameObject.transform.position + (_CombatControls.shootLocation.position - gameObject.transform.position));
     }
 }

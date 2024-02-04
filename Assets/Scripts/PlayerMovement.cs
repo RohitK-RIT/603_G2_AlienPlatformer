@@ -10,11 +10,20 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float jumpForce = 12f;
 
     CombatComponent _CombatControls;
+    SpriteRenderer _SpriteRenderer;
+    bool _bIsMoving;
+
+    // Public properties
+    public bool IsMoving
+    {
+        get { return _bIsMoving; }
+    }
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         _CombatControls = GetComponent<CombatComponent>();
+        _SpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void LateUpdate()
@@ -41,11 +50,23 @@ public class PlayerMovement : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
         transform.Translate(Vector3.right * horizontal * speed * Time.deltaTime);
 
+        // Update movement status flag
+        if (horizontal > 0.01f || horizontal  < -0.01f)
+            _bIsMoving = true;
+        else
+            _bIsMoving = false;
+
         // Update location of projectile spawn
         // based on movement direction
         if (horizontal > 0.1f)
+        {
             _CombatControls.TargetLocationFlipped(false);
+            _SpriteRenderer.flipX = false;
+        }
         else if(horizontal < -0.1f)
+        {
             _CombatControls.TargetLocationFlipped(true);
+            _SpriteRenderer.flipX = true;
+        }
     }
 }
