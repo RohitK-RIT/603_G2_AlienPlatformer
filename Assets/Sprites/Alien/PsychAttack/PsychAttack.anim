@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: LaserAttack
+  m_Name: PsychAttack
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,19 +21,13 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 21300000, guid: 9eaa43532a48f0c4eaf8b810108a1457, type: 3}
-    - time: 0.016666668
-      value: {fileID: 21300000, guid: f2046eade1c0586499a3d15bfaaee6b3, type: 3}
+      value: {fileID: 21300000, guid: 489cb28384b0e4a4ebd7d33992ec63cf, type: 3}
     - time: 0.05
-      value: {fileID: 21300000, guid: 317f9459f5cb7d647bf36df0d0e615fa, type: 3}
-    - time: 0.06666667
-      value: {fileID: 21300000, guid: bfb26ca6294b5b4499986337fe0a374a, type: 3}
-    - time: 0.1
-      value: {fileID: 21300000, guid: c0956343e0027e444ab78621dc1b6d6c, type: 3}
-    - time: 0.13333334
-      value: {fileID: 21300000, guid: c66e6773c091b6742bfddb06f98cb2ce, type: 3}
-    - time: 0.13333334
-      value: {fileID: 21300000, guid: c0956343e0027e444ab78621dc1b6d6c, type: 3}
+      value: {fileID: 21300000, guid: b0f4636174ef8cc4db8242daf785e48c, type: 3}
+    - time: 0.11666667
+      value: {fileID: 21300000, guid: 25b2a4a2d2ff0984ab4d8213d44102d1, type: 3}
+    - time: 0.16666667
+      value: {fileID: 21300000, guid: eab54bb04129bd546a2ae3541dac3ebd, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -56,19 +50,16 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 9eaa43532a48f0c4eaf8b810108a1457, type: 3}
-    - {fileID: 21300000, guid: f2046eade1c0586499a3d15bfaaee6b3, type: 3}
-    - {fileID: 21300000, guid: 317f9459f5cb7d647bf36df0d0e615fa, type: 3}
-    - {fileID: 21300000, guid: bfb26ca6294b5b4499986337fe0a374a, type: 3}
-    - {fileID: 21300000, guid: c0956343e0027e444ab78621dc1b6d6c, type: 3}
-    - {fileID: 21300000, guid: c66e6773c091b6742bfddb06f98cb2ce, type: 3}
-    - {fileID: 21300000, guid: c0956343e0027e444ab78621dc1b6d6c, type: 3}
+    - {fileID: 21300000, guid: 489cb28384b0e4a4ebd7d33992ec63cf, type: 3}
+    - {fileID: 21300000, guid: b0f4636174ef8cc4db8242daf785e48c, type: 3}
+    - {fileID: 21300000, guid: 25b2a4a2d2ff0984ab4d8213d44102d1, type: 3}
+    - {fileID: 21300000, guid: eab54bb04129bd546a2ae3541dac3ebd, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.15
+    m_StopTime: 0.18333334
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -88,7 +79,7 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.13333334
+  - time: 0.16666667
     functionName: EventLaunchProjectile
     data: 
     objectReferenceParameter: {fileID: 0}

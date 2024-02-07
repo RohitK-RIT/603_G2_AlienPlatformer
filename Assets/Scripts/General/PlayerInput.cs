@@ -20,7 +20,7 @@ public class PlayerInput : MonoBehaviour
     void Update()
     {
         // Shoot functionality
-        if(Input.GetKeyDown(KeyCode.Mouse0))
+        if(Input.GetKeyDown(KeyCode.Space))
         {
             _AnimControls.PlayAttack();
         }

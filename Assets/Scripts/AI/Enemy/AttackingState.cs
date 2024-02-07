@@ -43,7 +43,7 @@ public class AttackingState : BaseState<EnemyStateMachine.EnemyStates>
         }
 
         // Try launching a projectile
-        combatControls.LaunchProjectile(FSM.target.position);
+        combatControls.LaunchProjectile(new Vector3(FSM.target.position.x, FSM.gameObject.transform.position.y, 0.0f));
     }
 
     // Handler for state transitions
@@ -51,7 +51,7 @@ public class AttackingState : BaseState<EnemyStateMachine.EnemyStates>
     {
         // Check distance between transform and if not close enough 
         // transfer into idle state
-        if (Vector3.Distance(FSM.target.position, FSM.transform.position) >= 6.0f)
+        if (FSM.PerceptionControls.detectedColliders.Count == 0)
             return EnemyStateMachine.EnemyStates.Moving;
 
         return EnemyStateMachine.EnemyStates.Attacking;

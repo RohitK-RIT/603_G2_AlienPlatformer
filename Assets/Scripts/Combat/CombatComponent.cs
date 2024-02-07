@@ -74,7 +74,10 @@ public class CombatComponent : MonoBehaviour
         // Negate health
         health -= damage;
         if(healthBar)
-            healthBar.localScale = new Vector2(NormalizedHealth, 1f); 
+            healthBar.localScale = new Vector2(NormalizedHealth, 1f);
+
+        // Activate damage indicator
+        ShowDamage();
 
         // Death handling
         if(health <= 0.0f)
@@ -91,5 +94,34 @@ public class CombatComponent : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+    }
+
+    // Method used for handling damage indication
+    public void ShowDamage()
+    {
+        // Get the sprite renderer
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer == null)
+            spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+
+        // Change sprite color to red
+        if (spriteRenderer != null)
+            spriteRenderer.color = Color.red;
+
+        // Set color to be reset after a split second
+        Invoke("ResetColor", 0.1f);
+    }
+
+    // Method used for resetting color
+    public void ResetColor()
+    {
+        // Get the sprite renderer
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer == null)
+            spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+
+        // Change sprite color to red
+        if (spriteRenderer != null)
+            spriteRenderer.color = Color.white;
     }
 }

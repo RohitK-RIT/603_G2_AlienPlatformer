@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
     void LateUpdate()
     {
         // Jump
-        if (hasJump && (Input.GetAxis("Vertical") > 0 || Input.GetKeyDown(KeyCode.Space)))
+        if (hasJump && (Input.GetAxis("Vertical") > 0))
         {
             // Check gravity scale direction
             float jumpDirection = 1.0f;

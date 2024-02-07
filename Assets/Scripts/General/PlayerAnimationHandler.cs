@@ -44,7 +44,7 @@ public class PlayerAnimationHandler : MonoBehaviour
     public void PlayAttack()
     {
         // Play if not already attacking
-        if(!animator.GetCurrentAnimatorStateInfo(0).IsName("LaserAttack"))
+        if(!animator.GetCurrentAnimatorStateInfo(0).IsName("PsychAttack"))
             animator.SetTrigger(attackHash);
     }
 }

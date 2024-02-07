@@ -9,7 +9,6 @@ public class EnemyStateMachine : StateMachine<EnemyStateMachine.EnemyStates>
     {
         Idle,
         Moving,
-        Jumping,
         Attacking
     }
 
@@ -17,6 +16,7 @@ public class EnemyStateMachine : StateMachine<EnemyStateMachine.EnemyStates>
     CombatComponent _CombatControls;
     SpriteRenderer _SpriteRenderer;
     AIMovementComponent _MovementControls;
+    PerceptionComponent _PerceptionControls;
 
     // Public fields
     public Transform target;
@@ -33,6 +33,10 @@ public class EnemyStateMachine : StateMachine<EnemyStateMachine.EnemyStates>
     public AIMovementComponent MovementControls
     {
         get { return _MovementControls; }
+    }
+    public PerceptionComponent PerceptionControls
+    {
+        get { return _PerceptionControls; }
     }
 
 
@@ -56,5 +60,6 @@ public class EnemyStateMachine : StateMachine<EnemyStateMachine.EnemyStates>
         _CombatControls = GetComponent<CombatComponent>();
         _SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
         _MovementControls = GetComponent<AIMovementComponent>();
+        _PerceptionControls = GetComponent<PerceptionComponent>();
     }
 }
