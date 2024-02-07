@@ -21,7 +21,7 @@ public abstract class BaseState<EState> where EState : System.Enum
     public abstract EState GetNextState();
 
     // Overrideable methods optional for implementation
-    public virtual void OnTriggerEnter(Collider other) { }
-    public virtual void OnTriggerStay(Collider other) { }
-    public virtual void OnTriggerExit(Collider other) { }
+    public virtual void OnTriggerEnter(Collider2D other) { }
+    public virtual void OnTriggerStay(Collider2D other) { }
+    public virtual void OnTriggerExit(Collider2D other) { }
 }

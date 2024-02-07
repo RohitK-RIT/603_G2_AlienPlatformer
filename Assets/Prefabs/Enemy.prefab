@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: -2307687009112931962}
   - component: {fileID: 6007936539016525061}
   - component: {fileID: 2918160595431152720}
+  - component: {fileID: -1186979469407434817}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -96,6 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6d6a4cbfb357f845ac23b2830282bbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthBar: {fileID: 0}
   projectileClass: {fileID: 7421145480655589121, guid: 7d77b4e8d6b825447be1e098e806509b, type: 3}
   shootLocation: {fileID: 8271207892785662650}
   projectileSpeed: 2
@@ -192,6 +194,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be46a19a34a101e4cb6f3c9421debc94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-1186979469407434817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5543311223095943730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c28a7ace8075b494fae08b1a1594f4e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 7
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 8
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 64
+  angle: 90
+  detectedColliders: []
 --- !u!1 &5980999439520199367
 GameObject:
   m_ObjectHideFlags: 0

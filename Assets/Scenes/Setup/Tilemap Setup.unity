@@ -1260,6 +1260,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: In-Game UI 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5222920074855579442, guid: b36c1a5a6cffb4e469c936bfdd3a3c26, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028573422247405133, guid: b36c1a5a6cffb4e469c936bfdd3a3c26, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 19.199951
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1842,12 +1850,20 @@ PrefabInstance:
       value: PlayerPlaceholder
       objectReference: {fileID: 0}
     - target: {fileID: 1373385996358036023, guid: 7bf3649ffaefae24a99fa31e7aeb6b0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1373385996358036023, guid: 7bf3649ffaefae24a99fa31e7aeb6b0a, type: 3}
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 2685629003266110870, guid: 7bf3649ffaefae24a99fa31e7aeb6b0a, type: 3}
       propertyPath: orthographic size
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2968041416468893608, guid: 7bf3649ffaefae24a99fa31e7aeb6b0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3089118723336496816, guid: 7bf3649ffaefae24a99fa31e7aeb6b0a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1901,6 +1917,10 @@ PrefabInstance:
       propertyPath: gravityParticles
       value: 
       objectReference: {fileID: 80657546}
+    - target: {fileID: 8600576374244377087, guid: 7bf3649ffaefae24a99fa31e7aeb6b0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8999869142651868564, guid: 7bf3649ffaefae24a99fa31e7aeb6b0a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.38
@@ -4649,7 +4669,7 @@ GameObject:
   - component: {fileID: 1758193139}
   - component: {fileID: 1758193138}
   - component: {fileID: 1758193140}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Our Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}

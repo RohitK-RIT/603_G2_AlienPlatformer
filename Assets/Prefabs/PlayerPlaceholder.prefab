@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 6774758541426281452}
   - component: {fileID: 5330041542141840916}
   - component: {fileID: 4639071403374833299}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PlayerPlaceholder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -166,7 +166,7 @@ MonoBehaviour:
   shootLocation: {fileID: 8999869142651868564}
   projectileSpeed: 5
   health: 100
-  projectileCooldown: 1
+  projectileCooldown: 0.1
 --- !u!114 &2771883060577835027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,7 +273,7 @@ GameObject:
   - component: {fileID: 6975874602869748925}
   - component: {fileID: 6546136947342055190}
   - component: {fileID: 9218907916197412152}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -419,7 +419,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8999869142651868564}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Shoot Loc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
