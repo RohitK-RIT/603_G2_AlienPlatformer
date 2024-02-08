@@ -14,7 +14,7 @@ namespace Features.Gravity_Modification
 
         private void OnTriggerExit2D(Collider2D other)
         {
-            if (gameObject.CompareTag("Player"))
+            if (other.gameObject.CompareTag("Player"))
                 Physics2D.gravity = Vector2.down * 9.8f * Random.Range(0.5f, 1.5f);
         }
     }
