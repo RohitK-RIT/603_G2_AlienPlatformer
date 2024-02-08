@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private bool hasJump = true;
     [SerializeField] float speed = 5f;
     [SerializeField] float jumpForce = 12f;
+    public LayerMask groundMask;
 
     CombatComponent _CombatControls;
     SpriteRenderer _SpriteRenderer;
@@ -43,7 +44,11 @@ public class PlayerMovement : MonoBehaviour
         // Reset jump
         if (rb.velocity.y == 0)
         {
-            hasJump = true;
+            // Check if feet have made contact
+            if(Physics2D.Raycast(rb.transform.position, -rb.transform.up, 2.0f, groundMask))
+            {
+                hasJump = true;
+            }
         }
 
         // Movement
