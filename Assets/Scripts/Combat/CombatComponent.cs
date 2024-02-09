@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Features.Checkpoints;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -22,6 +24,13 @@ public class CombatComponent : MonoBehaviour
     float projectileCooldownTimer = 0.0f;
     bool canShootProjectile = false;
 
+    private CheckpointHandler _checkpointHandler;
+
+    private void Start()
+    {
+        _checkpointHandler = GetComponent<CheckpointHandler>();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -31,7 +40,7 @@ public class CombatComponent : MonoBehaviour
             projectileCooldownTimer -= Time.deltaTime;
 
             // Reset timer and shoot status
-            if(projectileCooldownTimer <= 0.0f)
+            if (projectileCooldownTimer <= 0.0f)
             {
                 projectileCooldownTimer = projectileCooldown;
                 canShootProjectile = true;
@@ -73,23 +82,25 @@ public class CombatComponent : MonoBehaviour
     {
         // Negate health
         health -= damage;
-        if(healthBar)
+        if (healthBar)
             healthBar.localScale = new Vector2(NormalizedHealth, 1f);
 
         // Activate damage indicator
         ShowDamage();
 
         // Death handling
-        if(health <= 0.0f)
+        if (health <= 0.0f)
         {
             // For the player
-            if(gameObject.tag == "Player")
+            if (gameObject.CompareTag("Player"))
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                if (_checkpointHandler.HasCheckpoint)
+                    _checkpointHandler.UseCheckpoint();
+                else
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
-
             // For enemies
-            if (gameObject.tag == "Enemy")
+            else if (gameObject.CompareTag("Enemy"))
             {
                 Destroy(gameObject);
             }
