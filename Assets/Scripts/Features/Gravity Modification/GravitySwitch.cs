@@ -34,7 +34,7 @@ namespace Features.Gravity_Modification
         /// </summary>
         private void Update()
         {
-            if (Input.anyKey && Input.GetKeyDown(KeyCode.G) && _rb.velocity.y == 0.0f)
+            if (Input.anyKey && Input.GetKeyDown(KeyCode.Space) && _rb.velocity.y == 0.0f)
                 FlipObjectGravity();
         }
 

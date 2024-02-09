@@ -45,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
         if (rb.velocity.y == 0)
         {
             // Check if feet have made contact
-            if(Physics2D.Raycast(rb.transform.position, -rb.transform.up, 2.0f, groundMask))
+            if(Physics2D.Raycast(rb.transform.position, -rb.transform.up * Mathf.Sign(rb.gravityScale), 2.0f, groundMask))
             {
                 hasJump = true;
             }
