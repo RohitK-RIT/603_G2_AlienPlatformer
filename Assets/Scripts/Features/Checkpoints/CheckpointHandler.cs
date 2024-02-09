@@ -5,13 +5,13 @@ namespace Features.Checkpoints
 {
     public class CheckpointHandler : MonoBehaviour
     {
-        public bool HasCheckpoint => _checkpoints.Count > 0;
+        public bool HasCheckpoint => _checkpoint.HasValue;
 
-        private Stack<Vector2> _checkpoints;
+        private Vector2? _checkpoint;
 
         private void Start()
         {
-            _checkpoints = new Stack<Vector2>();
+            _checkpoint = null;
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -21,13 +21,13 @@ namespace Features.Checkpoints
 
             var checkpointPos = other.GetComponent<Checkpoint>().GetCheckpointPos();
             if (checkpointPos.HasValue)
-                _checkpoints.Push(checkpointPos.Value + Vector2.up * 2f);
+                _checkpoint = checkpointPos.Value + Vector2.up * 2f;
         }
 
         public void UseCheckpoint()
         {
-            if (_checkpoints.TryPop(out var lastCheckpoint))
-                transform.position = new Vector3(lastCheckpoint.x, lastCheckpoint.y, transform.position.z);
+            if (_checkpoint.HasValue)
+                transform.position = new Vector3(_checkpoint.Value.x, _checkpoint.Value.y, transform.position.z);
             else
                 Debug.LogError("Trying to get a checkpoint from a bad _checkpoints stack.");
         }
