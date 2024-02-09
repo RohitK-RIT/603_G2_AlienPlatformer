@@ -20,10 +20,10 @@ public class PlayerInput : MonoBehaviour
     void Update()
     {
         // Shoot functionality
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            _AnimControls.PlayAttack();
-        }
+        //if(Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    _AnimControls.PlayAttack();
+        //}
     }
 
     // Method that is called once it is time for projectile to launch
