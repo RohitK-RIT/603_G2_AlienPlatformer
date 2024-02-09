@@ -5,8 +5,6 @@ namespace Features.Checkpoints
 {
     public class CheckpointHandler : MonoBehaviour
     {
-        public bool HasCheckpoint => _checkpoint.HasValue;
-
         private Vector2? _checkpoint;
 
         private void Start()
@@ -24,12 +22,13 @@ namespace Features.Checkpoints
                 _checkpoint = checkpointPos.Value + Vector2.up * 2f;
         }
 
-        public void UseCheckpoint()
+        public bool TryUseCheckpoint()
         {
-            if (_checkpoint.HasValue)
-                transform.position = new Vector3(_checkpoint.Value.x, _checkpoint.Value.y, transform.position.z);
-            else
-                Debug.LogError("Trying to get a checkpoint from a bad _checkpoints stack.");
+            if (!_checkpoint.HasValue)
+                return false;
+
+            transform.position = new Vector3(_checkpoint.Value.x, _checkpoint.Value.y, transform.position.z);
+            return true;
         }
     }
 }
