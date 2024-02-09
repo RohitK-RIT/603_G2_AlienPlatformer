@@ -95,7 +95,10 @@ public class CombatComponent : MonoBehaviour
             if (gameObject.CompareTag("Player"))
             {
                 if (_checkpointHandler.HasCheckpoint)
+                {
                     _checkpointHandler.UseCheckpoint();
+                    health = 100f;
+                }
                 else
                     SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
