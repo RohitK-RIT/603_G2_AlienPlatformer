@@ -18,8 +18,7 @@ namespace Features.Checkpoints
                 return;
 
             var checkpointPos = other.GetComponent<Checkpoint>().GetCheckpointPos();
-            if (checkpointPos.HasValue)
-                _checkpoint = checkpointPos.Value + Vector2.up * 2f;
+            _checkpoint = checkpointPos + Vector2.up * 2f;
         }
 
         public bool TryUseCheckpoint()

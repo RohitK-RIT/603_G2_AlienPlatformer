@@ -5,20 +5,18 @@ namespace Features.Checkpoints
     [RequireComponent(typeof(BoxCollider2D))]
     public class Checkpoint : MonoBehaviour
     {
-        public bool Used { get; private set; }
+        private BoxCollider2D _boxCollider2D;
 
         private void Start()
         {
-            GetComponent<BoxCollider2D>().isTrigger = true;
+            _boxCollider2D = GetComponent<BoxCollider2D>();
+            _boxCollider2D.isTrigger = true;
             gameObject.tag = "Checkpoint";
         }
 
-        public virtual Vector2? GetCheckpointPos()
+        public virtual Vector2 GetCheckpointPos()
         {
-            if (Used)
-                return null;
-            Used = true;
-
+            _boxCollider2D.enabled = false;
             return transform.position;
         }
     }
