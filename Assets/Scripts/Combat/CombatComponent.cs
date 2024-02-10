@@ -33,10 +33,12 @@ public class CombatComponent : MonoBehaviour
     bool canShootProjectile = false;
 
     private CheckpointHandler _checkpointHandler;
+    PlayerAnimationHandler _PlayerAnimControls;
 
     private void Start()
     {
         _checkpointHandler = GetComponent<CheckpointHandler>();
+        _PlayerAnimControls = GetComponent<PlayerAnimationHandler>();
     }
 
     // Update is called once per frame
@@ -102,10 +104,7 @@ public class CombatComponent : MonoBehaviour
             // For the player
             if (gameObject.CompareTag("Player"))
             {
-                if (_checkpointHandler.TryUseCheckpoint())
-                    health = 100f;
-                else
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                _PlayerAnimControls.PlayDeath();
             }
             // For enemies
             else if (gameObject.CompareTag("Enemy"))
@@ -142,5 +141,14 @@ public class CombatComponent : MonoBehaviour
         // Change sprite color to red
         if (spriteRenderer != null)
             spriteRenderer.color = Color.white;
+    }
+
+    // Method for handling player death
+    public void HandlePlayerDeath()
+    {
+        if (_checkpointHandler.TryUseCheckpoint())
+            health = 100f;
+        else
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

@@ -10,13 +10,16 @@ public class PlayerAnimationHandler : MonoBehaviour
     // Declare any animation hashes here
     int movingHash;
     int jumpHash;
-    int attackHash;
+    int electrocuteHash;
+    int deathHash;
+    int isAliveHash;
 
     // Get rigid body component
     Rigidbody2D rb;
 
     // Private fields
     PlayerMovement _MovementControls;
+    CombatComponent _CombatControls;
 
     // Start is called before the first frame update
     void Start()
@@ -25,9 +28,12 @@ public class PlayerAnimationHandler : MonoBehaviour
         animator = gameObject.GetComponent<Animator>();
         movingHash = Animator.StringToHash("IsMoving");
         jumpHash = Animator.StringToHash("IsJumping");
-        attackHash = Animator.StringToHash("Attack");
+        electrocuteHash = Animator.StringToHash("Electrocute");
+        deathHash = Animator.StringToHash("Death");
+        isAliveHash = Animator.StringToHash("IsAlive");
         rb = GetComponent<Rigidbody2D>();
         _MovementControls = GetComponent<PlayerMovement>();
+        _CombatControls = GetComponent<CombatComponent>();
     }
 
     // Update is called once per frame
@@ -38,13 +44,24 @@ public class PlayerAnimationHandler : MonoBehaviour
 
         // Update jump status based on y velocity
         animator.SetBool(jumpHash, rb.velocity.y > 0.01f || rb.velocity.y < -0.1f);
+
+        // Update health status
+        animator.SetBool(isAliveHash, _CombatControls.health > 0.0f);
     }
 
-    // Method for playing attack animation
-    public void PlayAttack()
+    // Method for playing death animation
+    public void PlayDeath()
     {
         // Play if not already attacking
-        if(!animator.GetCurrentAnimatorStateInfo(0).IsName("PsychAttack"))
-            animator.SetTrigger(attackHash);
+        if(!animator.GetCurrentAnimatorStateInfo(0).IsName("Death"))
+            animator.SetTrigger(deathHash);
+    }
+
+    // Method for playing electrocute animation
+    public void PlayElectrocute()
+    {
+        // Play if not already attacking
+        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Electrocute"))
+            animator.SetTrigger(electrocuteHash);
     }
 }
