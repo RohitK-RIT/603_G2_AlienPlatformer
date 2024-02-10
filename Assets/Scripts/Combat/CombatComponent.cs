@@ -13,6 +13,14 @@ public enum ShootDirection
     Vertical,
     Any
 }
+
+// Public enum for shooting mode
+public enum ShootMode
+{
+    SemiAuto,
+    Burst
+}
+
 public class CombatComponent : MonoBehaviour
 {
     public RectTransform healthBar;
@@ -25,10 +33,12 @@ public class CombatComponent : MonoBehaviour
     public float projectileSpeed = 2.0f;
     public float health = 100.0f;
     public ShootDirection shootDirection;
+    public ShootMode shootMode = ShootMode.SemiAuto;
     public float NormalizedHealth => health / 100f;
 
     // Fields for handling cooldown timer
     public float projectileCooldown = 1.0f;
+    public int burstProjectileCount = 3;
     float projectileCooldownTimer = 0.0f;
     bool canShootProjectile = false;
 
@@ -68,9 +78,45 @@ public class CombatComponent : MonoBehaviour
         // Update shoot status
         canShootProjectile = false;
 
+        // Launch projectiles based on shoot mode
+        switch (shootMode)
+        {
+            case ShootMode.SemiAuto:
+                // Launch 1 projectile
+                CreateProjectile(targetPos);
+                break;
+            case ShootMode.Burst:
+                // Launch multiple projectiles
+                StartCoroutine(BurstRoutine(targetPos, burstProjectileCount));
+                break;
+        }
+    }
+
+    // Method for instantiating projectile
+    void CreateProjectile(Vector3 targetPos)
+    {
         // Instantiate the projectile and set its velocity
         GameObject projectile = Instantiate(projectileClass, shootLocation.position, transform.rotation);
         projectile.GetComponentInChildren<Rigidbody2D>().velocity = (targetPos - transform.position) * projectileSpeed;
+    }
+
+    // Delayed action used to create a projectile every 0.2 seconds
+    private IEnumerator BurstRoutine(Vector3 targetPos, int numProjectiles)
+    {
+        // Set delay
+        float delay = 0.2f;
+        WaitForSeconds wait = new WaitForSeconds(delay);
+
+        // Track number of projectiles
+        int projectilesShot = 0;
+
+        // Keep shooting every delay until desired projectiles are shot
+        while (projectilesShot < numProjectiles)
+        {
+            yield return wait;
+            CreateProjectile(targetPos);
+            projectilesShot++;
+        }
     }
 
     // Method used for flipping target location
