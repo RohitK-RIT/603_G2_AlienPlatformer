@@ -14,7 +14,6 @@ public class AIMovementComponent : MonoBehaviour
     bool canMove = false;
     Vector2 currentVelocity;
     Rigidbody2D rb;
-    SpriteRenderer _SpriteRenderer;
 
     // Patrol tracking fields
     int patrolIndex = 0;
@@ -31,7 +30,6 @@ public class AIMovementComponent : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        _SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
         targetLocation = patrolPoints[patrolIndex];
     }
 
@@ -39,20 +37,16 @@ public class AIMovementComponent : MonoBehaviour
     void Update()
     {
         // Move if capable
-        if(canMove)
+        if (canMove)
         {
             // Check if at destination and if so
             // update target to next patrol point
             if (IsAtDestination())
                 UpdatePatrolPoint();
             UpdateVelocity();
-
-            // Have sprite face toward movement direction
-            if (rb.velocity.x < 0.0f)
-                _SpriteRenderer.flipX = true;
-            else
-                _SpriteRenderer.flipX = false;
         }
+        else // Stop agent from moving
+            rb.velocity = new Vector3();
     }
 
     // Method used for updating the current velocity 
@@ -66,7 +60,7 @@ public class AIMovementComponent : MonoBehaviour
         currentVelocity += Steer(desiredVelocity.normalized * maxSpeed);
 
         // Update the rigid body velocity
-        rb.velocity = new Vector3(currentVelocity.x, 0.0f, 0.0f);
+        rb.velocity = new Vector3(currentVelocity.x, currentVelocity.y, 0.0f);
     }
 
     // Method for returning a steering velocity

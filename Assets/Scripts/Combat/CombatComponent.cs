@@ -6,6 +6,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+// Public enum for shooting directions
+public enum ShootDirection
+{
+    Horizontal,
+    Vertical,
+    Any
+}
 public class CombatComponent : MonoBehaviour
 {
     public RectTransform healthBar;
@@ -17,6 +24,7 @@ public class CombatComponent : MonoBehaviour
     public Transform shootLocation;
     public float projectileSpeed = 2.0f;
     public float health = 100.0f;
+    public ShootDirection shootDirection;
     public float NormalizedHealth => health / 100f;
 
     // Fields for handling cooldown timer

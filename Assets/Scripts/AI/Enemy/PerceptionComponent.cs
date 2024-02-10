@@ -8,6 +8,7 @@ public class PerceptionComponent : MonoBehaviour
     public float radius;
     public LayerMask targetMask;
     public LayerMask obstacleMask;
+    public Transform eyesTransform;
 
     // Limit angle to be between 0 and 360 degrees
     [Range(0, 360)]
@@ -16,17 +17,11 @@ public class PerceptionComponent : MonoBehaviour
     // Used for storing detected colliders
     public List<Collider2D> detectedColliders;
 
-    // Get sprite renderer
-    SpriteRenderer spriteRenderer;
-
     // Start is called before the first frame update
     void Start()
     {
         // Init detected objects list
         detectedColliders = new List<Collider2D>();
-
-        // Init needed components
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
         // Start player detection
         StartCoroutine(FOVRoutine());
@@ -49,7 +44,7 @@ public class PerceptionComponent : MonoBehaviour
     private void FieldOfViewCheck()
     {
         // Collider Array which will hold all possible targets
-        Collider2D[] rangeChecks = Physics2D.OverlapCircleAll(transform.position, radius, targetMask);
+        Collider2D[] rangeChecks = Physics2D.OverlapCircleAll(eyesTransform.position, radius, targetMask);
 
         // Temp list used for getting the detected objects
         List<Collider2D> detectedTests = new List<Collider2D>();
@@ -62,23 +57,16 @@ public class PerceptionComponent : MonoBehaviour
             {
                 // Get the target transform and distance between the two
                 Transform target = collider.transform;
-                Vector3 directionToTarget = (target.position - transform.position).normalized;
-
-                // Calculate direction of FOV
-                Vector3 FOVDirection;
-                if (spriteRenderer.flipX)
-                    FOVDirection = -transform.right;
-                else
-                    FOVDirection = transform.right;
+                Vector3 directionToTarget = (target.position - eyesTransform.position).normalized;
 
                 // Check if the player is within the FOV of the agent
-                if (Vector3.Angle(FOVDirection, directionToTarget) < angle / 2)
+                if (Vector3.Angle((eyesTransform.position - transform.position).normalized, directionToTarget) < angle / 2)
                 {
                     // Get distance between target and agent
-                    float distanceToTarget = Vector3.Distance(transform.position, target.position);
+                    float distanceToTarget = Vector3.Distance(eyesTransform.position, target.position);
 
                     // Raycast that checks for obstacles
-                    if (!Physics2D.Raycast(transform.position, directionToTarget, distanceToTarget, obstacleMask))
+                    if (!Physics2D.Raycast(eyesTransform.position, directionToTarget, distanceToTarget, obstacleMask))
                     {
                         // Add collider to list of detected tests
                         detectedTests.Add(collider);

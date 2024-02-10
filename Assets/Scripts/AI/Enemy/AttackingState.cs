@@ -26,24 +26,28 @@ public class AttackingState : BaseState<EnemyStateMachine.EnemyStates>
     // Handler for state update ticks
     public override void UpdateState()
     {
+        FSM.MovementControls.CanMove = false;
         // Get combat controls
         CombatComponent combatControls = FSM.CombatControls;
 
-        // Set enemy to face target
-        SpriteRenderer spriteRenderer = FSM.SpriteRenderer;
-        if (FSM.target.position.x < FSM.gameObject.transform.position.x)
+        // Get projectile target based on shooting direction
+        Vector3 targetLoc = new Vector3();
+        switch (combatControls.shootDirection)
         {
-            spriteRenderer.flipX = true;
-            combatControls.TargetLocationFlipped(true);
-        }
-        else
-        {
-            spriteRenderer.flipX = false;
-            combatControls.TargetLocationFlipped(false);
+            case ShootDirection.Horizontal:
+                targetLoc = new Vector3(FSM.target.position.x, FSM.gameObject.transform.position.y, 0.0f);
+                break;
+            case ShootDirection.Vertical:
+                targetLoc = new Vector3(FSM.gameObject.transform.position.x, FSM.target.position.y, 0.0f);
+                break;
+            case ShootDirection.Any:
+                targetLoc = new Vector3(FSM.target.position.x, FSM.target.position.y, 0.0f);
+                break;
         }
 
+
         // Try launching a projectile
-        combatControls.LaunchProjectile(new Vector3(FSM.target.position.x, FSM.gameObject.transform.position.y, 0.0f));
+        combatControls.LaunchProjectile(targetLoc);
     }
 
     // Handler for state transitions
