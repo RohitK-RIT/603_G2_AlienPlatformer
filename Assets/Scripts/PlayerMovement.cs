@@ -48,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
             if(Physics2D.Raycast(rb.transform.position, -rb.transform.up * Mathf.Sign(rb.gravityScale), 2.0f, groundMask))
             {
                 hasJump = true;
+                rb.gravityScale = Mathf.Sign(rb.gravityScale) * 2.0f;
             }
         }
 

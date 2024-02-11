@@ -193,7 +193,12 @@ public class CombatComponent : MonoBehaviour
     public void HandlePlayerDeath()
     {
         if (_checkpointHandler.TryUseCheckpoint())
+        {
             health = 100f;
+
+            if (healthBar)
+                healthBar.localScale = new Vector2(NormalizedHealth, 1f);
+        }
         else
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }

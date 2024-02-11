@@ -87,7 +87,9 @@ MonoBehaviour:
   projectileSpeed: 2
   health: 100
   shootDirection: 2
+  shootMode: 0
   projectileCooldown: 1
+  burstProjectileCount: 3
 --- !u!50 &1707224693601702965
 Rigidbody2D:
   serializedVersion: 4
@@ -262,7 +264,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 89e065c848ffbd841b38954d9b963de1, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.35684407, g: 0.5396524, b: 0.764151, a: 1}
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0

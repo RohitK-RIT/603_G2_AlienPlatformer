@@ -43,8 +43,8 @@ namespace Features.Gravity_Modification
         /// </summary>
         private void FlipObjectGravity()
         {
-            // Reverse the gravity
-            var gravityScale = _rb.gravityScale;
+            // Reverse the gravity and scale it up
+            var gravityScale = _rb.gravityScale * 2.0f;
             gravityScale = -gravityScale;
             _rb.gravityScale = gravityScale;
 
