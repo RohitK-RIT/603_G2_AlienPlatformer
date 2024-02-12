@@ -36,9 +36,9 @@ public class MovingState : BaseState<EnemyStateMachine.EnemyStates>
     // Handler for state transitions
     public override EnemyStateMachine.EnemyStates GetNextState()
     {
-        // Check distance between transform and if close enough 
-        // transfer into attack state
-        if (Vector3.Distance(FSM.target.position, FSM.transform.position) <= 6.0f)
+        // Check for player detection and if spotted, switch
+        // to attacking state
+        if (FSM.PerceptionControls.detectedColliders.Count > 0)
             return EnemyStateMachine.EnemyStates.Attacking;
 
         return EnemyStateMachine.EnemyStates.Moving;

@@ -6,14 +6,15 @@ TagManager:
   tags:
   - Enemy
   - Projectile
+  - Checkpoint
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
+  - Obstacle
   - 
   - 
   - 

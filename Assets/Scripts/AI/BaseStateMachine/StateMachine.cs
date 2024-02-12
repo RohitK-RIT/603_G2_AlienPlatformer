@@ -57,19 +57,19 @@ public abstract class StateMachine<EState> : MonoBehaviour where EState : System
     }
 
     // Calls upon state trigger handler for enter
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         currentState.OnTriggerEnter(other);
     }
 
     // Calls upon state trigger handler for stay
-    void OnTriggerStay(Collider other)
+    void OnTriggerStay2D(Collider2D other)
     {
         currentState.OnTriggerStay(other);
     }
 
     // Calls upon state trigger handler for exit
-    void OnTriggerExit(Collider other)
+    void OnTriggerExit2D(Collider2D other)
     {
         currentState.OnTriggerExit(other);
     }

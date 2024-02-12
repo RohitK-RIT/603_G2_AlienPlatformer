@@ -8,19 +8,29 @@ public class PlayerMovement : MonoBehaviour
     private bool hasJump = true;
     [SerializeField] float speed = 5f;
     [SerializeField] float jumpForce = 12f;
+    public LayerMask groundMask;
 
     CombatComponent _CombatControls;
+    SpriteRenderer _SpriteRenderer;
+    bool _bIsMoving;
+
+    // Public properties
+    public bool IsMoving
+    {
+        get { return _bIsMoving; }
+    }
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         _CombatControls = GetComponent<CombatComponent>();
+        _SpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void LateUpdate()
     {
         // Jump
-        if (hasJump && (Input.GetAxis("Vertical") > 0 || Input.GetKeyDown(KeyCode.Space)))
+        if (hasJump && (Input.GetAxis("Vertical") > 0))
         {
             // Check gravity scale direction
             float jumpDirection = 1.0f;
@@ -34,18 +44,35 @@ public class PlayerMovement : MonoBehaviour
         // Reset jump
         if (rb.velocity.y == 0)
         {
-            hasJump = true;
+            // Check if feet have made contact
+            if(Physics2D.Raycast(rb.transform.position, -rb.transform.up * Mathf.Sign(rb.gravityScale), 2.0f, groundMask))
+            {
+                hasJump = true;
+                rb.gravityScale = Mathf.Sign(rb.gravityScale) * 2.0f;
+            }
         }
 
         // Movement
         float horizontal = Input.GetAxis("Horizontal");
         transform.Translate(Vector3.right * horizontal * speed * Time.deltaTime);
 
+        // Update movement status flag
+        if (horizontal > 0.01f || horizontal  < -0.01f)
+            _bIsMoving = true;
+        else
+            _bIsMoving = false;
+
         // Update location of projectile spawn
         // based on movement direction
         if (horizontal > 0.1f)
+        {
             _CombatControls.TargetLocationFlipped(false);
+            _SpriteRenderer.flipX = false;
+        }
         else if(horizontal < -0.1f)
+        {
             _CombatControls.TargetLocationFlipped(true);
+            _SpriteRenderer.flipX = true;
+        }
     }
 }
