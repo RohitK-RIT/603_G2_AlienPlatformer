@@ -77,7 +77,7 @@ public class OnboardingInstructions : MonoBehaviour
                 }
                 else if (Input.GetKeyDown(KeyCode.Space) && instructions[currentInstructionIndex]
                              .Contains(
-                                 "Each alien possesses the extraordinary capability to manipulate gravity at will, a skill pivotal to their quest for liberation. By pressing \"Space Bar,\" players can alter the direction"))
+                                 "Each alien can manipulate gravity at will, a crucial skill for their mission of liberation. By pressing \"Space Bar\" players can change gravity's direction, allowing aliens to traverse ceilings and vertical surfaces, bypassing obstacles and evading security measures."))
                 {
                     keyPressed = true;
                 }

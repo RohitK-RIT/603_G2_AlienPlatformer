@@ -438,8 +438,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
-  m_fontSizeBase: 32
+  m_fontSize: 28
+  m_fontSizeBase: 28
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -602,9 +602,9 @@ MonoBehaviour:
   - 'Press "W'''' to leap over obstacles that lie in their path. Your mission is
     to guide a resourceful robot ally, a key figure in their resistance, navigating
     through a maze of challenges to reach the finish line. '
-  - Each alien possesses the extraordinary capability to manipulate gravity at will,
-    a skill pivotal to their quest for liberation. By pressing "Space Bar," players
-    can alter the direction of gravity itself, enabling the aliens to walk on ceilings,
-    scale vertical surfaces, or navigate through otherwise impassable obstacles.
+  - Each alien can manipulate gravity at will, a crucial skill for their mission
+    of liberation. By pressing "Space Bar" players can change gravity's direction,
+    allowing aliens to traverse ceilings and vertical surfaces, bypassing obstacles
+    and evading security measures.
   instructionsText: {fileID: 2677607195717191412}
   onboardingPanel: {fileID: 5920624006296493570}
