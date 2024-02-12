@@ -244,8 +244,8 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.76729554, g: 0.76729554, b: 0.76729554, a: 1}
+    m_HighlightedColor: {r: 0.18431373, g: 1, b: 0.22745098, a: 1}
+    m_PressedColor: {r: 0.5647059, g: 0.85882354, b: 0.5882353, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -821,8 +821,8 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.76729554, g: 0.76729554, b: 0.76729554, a: 1}
+    m_HighlightedColor: {r: 0.18396229, g: 1, b: 0.22612818, a: 1}
+    m_PressedColor: {r: 0.56287825, g: 0.8584906, b: 0.5885088, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -843,10 +843,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2933743252164128726}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 4305287893030631001}
+        m_TargetAssemblyTypeName: SceneManagers, Assembly-CSharp
+        m_MethodName: LoadScene
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1679,6 +1679,7 @@ GameObject:
   - component: {fileID: 5660649396015417575}
   - component: {fileID: 5467405206539924397}
   - component: {fileID: 5384573331762963056}
+  - component: {fileID: 4305287893030631001}
   m_Layer: 5
   m_Name: In-Game UI
   m_TagString: Untagged
@@ -1796,6 +1797,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a280d5b6b0889684db6f3e2ca7fc274e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4305287893030631001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5028514164486557670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54cb3d9ffcd16834e964f511453f567b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5045410180077138113
