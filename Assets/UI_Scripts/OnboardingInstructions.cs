@@ -78,14 +78,6 @@ public class OnboardingInstructions : MonoBehaviour
             {
                 keyPressed = true;
             }
-            // Check if the player presses the correct key for the current instruction
-            //if ((Input.GetKeyDown(KeyCode.A) && instructions[currentInstructionIndex] == "The aliens have infiltrated the human space station orbiting the planet, determined to fight back and liberate their home. Use the \"A\" Key to Move Left") ||
-            //    (Input.GetKeyDown(KeyCode.D) && instructions[currentInstructionIndex] == "and \"D\" Key to maneuver right through the station's intricate corridors.") ||
-            //    (Input.GetKeyDown(KeyCode.W) && instructions[currentInstructionIndex] == "Press \"W'' to leap over obstacles that lie in their path. Your mission is to guide a resourceful robot ally, a key figure in their resistance, navigating through a maze of challenges to reach the finish line. ") ||
-            //    (Input.GetKeyDown(KeyCode.Space) && instructions[currentInstructionIndex] == "Each alien possesses the extraordinary capability to manipulate gravity at will, a skill pivotal to their quest for liberation. By pressing \"Space Bar,\" players can alter the direction"))
-            //{
-            //    yield break;
-            //}
             yield return null; // Wait for next frame
         }
     }
