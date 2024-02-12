@@ -172,8 +172,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -556.0371, y: 352.6264}
-  m_SizeDelta: {x: -1247.302, y: -833.0521}
+  m_AnchoredPosition: {x: -563.2789, y: 334.2823}
+  m_SizeDelta: {x: -1176.596, y: -703.5247}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4477056925297244549
 CanvasRenderer:
@@ -333,7 +333,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1331949328432170709}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9104645401737299249}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7032236474466344758
 GameObject:
   m_ObjectHideFlags: 0
@@ -368,8 +380,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0010223, y: 33.3964}
-  m_SizeDelta: {x: 672.7, y: 180.1532}
+  m_AnchoredPosition: {x: 0.0020046, y: 29}
+  m_SizeDelta: {x: 743.4, y: 292.4722}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6110183070359845793
 CanvasRenderer:
@@ -408,8 +420,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -426,8 +438,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -480,7 +492,7 @@ GameObject:
   - component: {fileID: 2638034632988687530}
   - component: {fileID: 3183045724647362813}
   - component: {fileID: 2036582864597440733}
-  - component: {fileID: 8647008771002123820}
+  - component: {fileID: 4724930103729413775}
   m_Layer: 5
   m_Name: UI-Onboarding
   m_TagString: Untagged
@@ -571,7 +583,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &8647008771002123820
+--- !u!114 &4724930103729413775
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -580,6 +592,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 9104645401737299249}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7675fd54f0f4bf499fd70982a6c9868, type: 3}
+  m_Script: {fileID: 11500000, guid: e62a89c4d3fe3f2438b3fc9a819da13c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  instructions:
+  - The aliens have infiltrated the human space station orbiting the planet, determined
+    to fight back and liberate their home. Use the "A" Key to Move Left
+  - and "D" Key to maneuver right through the station's intricate corridors.
+  - 'Press "W'''' to leap over obstacles that lie in their path. Your mission is
+    to guide a resourceful robot ally, a key figure in their resistance, navigating
+    through a maze of challenges to reach the finish line. '
+  - Each alien possesses the extraordinary capability to manipulate gravity at will,
+    a skill pivotal to their quest for liberation. By pressing "Space Bar," players
+    can alter the direction of gravity itself, enabling the aliens to walk on ceilings,
+    scale vertical surfaces, or navigate through otherwise impassable obstacles.
+  instructionsText: {fileID: 2677607195717191412}
+  onboardingPanel: {fileID: 5920624006296493570}
