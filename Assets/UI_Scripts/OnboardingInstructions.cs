@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class OnboardingInstructions : MonoBehaviour
 {
@@ -52,24 +50,34 @@ public class OnboardingInstructions : MonoBehaviour
 
     IEnumerator WaitForInput()
     {
-        bool keyPressed = false;
+        var keyPressed = false;
         while (!keyPressed)
         {
-            if(currentInstructionIndex < instructions.Length)
+            if (currentInstructionIndex < instructions.Length)
             {
-                if ((Input.GetKeyDown(KeyCode.A) && instructions[currentInstructionIndex].Contains("The aliens have infiltrated the human space station orbiting the planet, determined to fight back and liberate their home. Use the \"A\" Key to Move Left")))
+                var xAxis = Input.GetAxis("Horizontal");
+                var yAxis = Input.GetAxis("Vertical");
+
+                if (xAxis < 0 && instructions[currentInstructionIndex]
+                        .Contains(
+                            "The aliens have infiltrated the human space station orbiting the planet, determined to fight back and liberate their home. Use the \"A\" Key to Move Left"))
                 {
                     keyPressed = true;
                 }
-                else if ((Input.GetKeyDown(KeyCode.D) && instructions[currentInstructionIndex].Contains("and \"D\" Key to maneuver right through the station's intricate corridors.")))
+                else if (xAxis > 0 &&
+                         instructions[currentInstructionIndex].Contains("and \"D\" Key to maneuver right through the station's intricate corridors."))
                 {
                     keyPressed = true;
                 }
-                else if ((Input.GetKeyDown(KeyCode.W) && instructions[currentInstructionIndex].Contains("Press \"W'' to leap over obstacles that lie in their path. Your mission is to guide a resourceful robot ally, a key figure in their resistance, navigating through a maze of challenges to reach the finish line. ")))
+                else if (yAxis > 0 && instructions[currentInstructionIndex]
+                             .Contains(
+                                 "Press \"W'' to leap over obstacles that lie in their path. Your mission is to guide a resourceful robot ally, a key figure in their resistance, navigating through a maze of challenges to reach the finish line. "))
                 {
                     keyPressed = true;
                 }
-                else if ((Input.GetKeyDown(KeyCode.Space) && instructions[currentInstructionIndex].Contains("Each alien possesses the extraordinary capability to manipulate gravity at will, a skill pivotal to their quest for liberation. By pressing \"Space Bar,\" players can alter the direction")))
+                else if (Input.GetKeyDown(KeyCode.Space) && instructions[currentInstructionIndex]
+                             .Contains(
+                                 "Each alien possesses the extraordinary capability to manipulate gravity at will, a skill pivotal to their quest for liberation. By pressing \"Space Bar,\" players can alter the direction"))
                 {
                     keyPressed = true;
                 }
@@ -78,6 +86,7 @@ public class OnboardingInstructions : MonoBehaviour
             {
                 keyPressed = true;
             }
+
             yield return null; // Wait for next frame
         }
     }
