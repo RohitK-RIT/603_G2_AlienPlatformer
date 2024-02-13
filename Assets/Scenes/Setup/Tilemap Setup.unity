@@ -1344,6 +1344,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5162096218880364683, guid: 764a435d3e8d7954f948bac4efa9ba64, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5265702649902304567, guid: 764a435d3e8d7954f948bac4efa9ba64, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7205815648762572623, guid: 764a435d3e8d7954f948bac4efa9ba64, type: 3}
       propertyPath: m_Name
       value: TransitionScreens
