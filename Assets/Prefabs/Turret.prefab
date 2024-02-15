@@ -101,7 +101,10 @@ MonoBehaviour:
   shootLocation: {fileID: 8271207892785662650}
   projectileSpeed: 2
   health: 100
+  shootDirection: 0
+  shootMode: 0
   projectileCooldown: 1
+  burstProjectileCount: 3
 --- !u!50 &1707224693601702965
 Rigidbody2D:
   serializedVersion: 4
@@ -201,7 +204,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   eyesTransform: {fileID: 0}
-  angle: 90
+  angle: 45
   detectedColliders: []
 --- !u!1 &5980999439520199367
 GameObject:
