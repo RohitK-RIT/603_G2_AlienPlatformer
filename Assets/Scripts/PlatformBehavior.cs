@@ -6,7 +6,7 @@ public class PlatformBehavior : MonoBehaviour
 {
     [Header("Breakaway")]
     [SerializeField] bool isBreakaway = false;
-    [SerializeField] float timeTillDrop = 0.8f;
+    [SerializeField] float timeTillDestroy = 0.8f;
 
     [Header("Movement")]
     [SerializeField] bool isMoving = false;
@@ -68,16 +68,16 @@ public class PlatformBehavior : MonoBehaviour
         if (isBreakaway && collision.gameObject.tag == "Player")
         {
             if (hasBroken) return;
-            StartCoroutine(AddRigidBody());
+            StartCoroutine(DestroyPlatform());
         }
     }
 
-    IEnumerator AddRigidBody() 
+    IEnumerator DestroyPlatform() 
     {
         hasBroken = true;
-        yield return new WaitForSeconds(timeTillDrop);
+        yield return new WaitForSeconds(timeTillDestroy);
 
-        // Add rigidbody to platform to make it fall
-        gameObject.AddComponent<Rigidbody2D>();
+        // Destory Platform
+        Destroy(gameObject);
     }
 }
