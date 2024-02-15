@@ -4879,7 +4879,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 3
-  damage: 5
+  damage: 8
   impactParticles: {fileID: 608099487909513384, guid: 9aeecd2f148487041bb67c1a10a6b2cb, type: 3}
 --- !u!50 &8148152838081666463
 Rigidbody2D:
