@@ -1,78 +1,63 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D), typeof(CombatComponent), typeof(SpriteRenderer))]
 public class PlayerMovement : MonoBehaviour
 {
-    private Rigidbody2D rb;
-    private bool hasJump = true;
-    [SerializeField] float speed = 5f;
-    [SerializeField] float jumpForce = 12f;
+    [SerializeField] private float speed = 5f;
+    [SerializeField] private float jumpForce = 12f;
     public LayerMask groundMask;
 
-    CombatComponent _CombatControls;
-    SpriteRenderer _SpriteRenderer;
-    bool _bIsMoving;
+    private Rigidbody2D _rb;
+    private CombatComponent _combatControls;
+    private SpriteRenderer _spriteRenderer;
 
     // Public properties
-    public bool IsMoving
+    public bool IsMoving { get; private set; }
+
+    private void Start()
     {
-        get { return _bIsMoving; }
+        _rb = GetComponent<Rigidbody2D>();
+        _combatControls = GetComponent<CombatComponent>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    void Start()
+    private void LateUpdate()
     {
-        rb = GetComponent<Rigidbody2D>();
-        _CombatControls = GetComponent<CombatComponent>();
-        _SpriteRenderer = GetComponent<SpriteRenderer>();
-    }
+        // Check if jump buttons are pressed
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+            // Reset jump
+            if (_rb.velocity.y == 0)
+                // Check if feet have made contact
+                if (Physics2D.Raycast(_rb.transform.position, -_rb.transform.up * Mathf.Sign(_rb.gravityScale), 2.0f, groundMask))
+                {
+                    // Check gravity scale direction
+                    var jumpDirection = 1.0f;
+                    if (_rb.gravityScale < 0.0f)
+                        jumpDirection = -1.0f;
 
-    void LateUpdate()
-    {
-        // Jump
-        if (hasJump && (Input.GetAxis("Vertical") > 0))
-        {
-            // Check gravity scale direction
-            float jumpDirection = 1.0f;
-            if (rb.gravityScale < 0.0f)
-                jumpDirection = -1.0f;
-
-            rb.AddForce(Vector2.up * jumpForce * jumpDirection, ForceMode2D.Impulse);
-            hasJump = false;
-        }
-
-        // Reset jump
-        if (rb.velocity.y == 0)
-        {
-            // Check if feet have made contact
-            if(Physics2D.Raycast(rb.transform.position, -rb.transform.up * Mathf.Sign(rb.gravityScale), 2.0f, groundMask))
-            {
-                hasJump = true;
-                rb.gravityScale = Mathf.Sign(rb.gravityScale) * 2.0f;
-            }
-        }
+                    _rb.AddForce(Vector2.up * (jumpForce * jumpDirection), ForceMode2D.Impulse);
+                    _rb.gravityScale = Mathf.Sign(_rb.gravityScale) * 2.0f;
+                }
 
         // Movement
-        float horizontal = Input.GetAxis("Horizontal");
-        transform.Translate(Vector3.right * horizontal * speed * Time.deltaTime);
+        var horizontal = Input.GetAxis("Horizontal");
+        transform.Translate(Vector3.right * (horizontal * speed * Time.deltaTime));
 
         // Update movement status flag
-        if (horizontal > 0.01f || horizontal  < -0.01f)
-            _bIsMoving = true;
-        else
-            _bIsMoving = false;
+        IsMoving = horizontal is > 0.01f or < -0.01f;
 
-        // Update location of projectile spawn
-        // based on movement direction
-        if (horizontal > 0.1f)
+        switch (horizontal)
         {
-            _CombatControls.TargetLocationFlipped(false);
-            _SpriteRenderer.flipX = false;
-        }
-        else if(horizontal < -0.1f)
-        {
-            _CombatControls.TargetLocationFlipped(true);
-            _SpriteRenderer.flipX = true;
+            // Update location of projectile spawn
+            // based on movement direction
+            case > 0.1f:
+                _combatControls.TargetLocationFlipped(false);
+                _spriteRenderer.flipX = false;
+                break;
+            case < -0.1f:
+                _combatControls.TargetLocationFlipped(true);
+                _spriteRenderer.flipX = true;
+                break;
         }
     }
 }
