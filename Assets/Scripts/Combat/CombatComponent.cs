@@ -5,6 +5,7 @@ using Features.Checkpoints;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Features.Gravity_Modification;
 
 // Public enum for shooting directions
 public enum ShootDirection
@@ -44,11 +45,13 @@ public class CombatComponent : MonoBehaviour
 
     private CheckpointHandler _checkpointHandler;
     PlayerAnimationHandler _PlayerAnimControls;
+    Rigidbody2D _rb;
 
     private void Start()
     {
         _checkpointHandler = GetComponent<CheckpointHandler>();
         _PlayerAnimControls = GetComponent<PlayerAnimationHandler>();
+        _rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -194,10 +197,16 @@ public class CombatComponent : MonoBehaviour
     {
         if (_checkpointHandler.TryUseCheckpoint())
         {
+            // Reset health
             health = 100f;
 
+            // Reset health bar
             if (healthBar)
                 healthBar.localScale = new Vector2(NormalizedHealth, 1f);
+
+            // Reset gravity
+            if (_rb.gravityScale < 0.0f)
+                GetComponent<GravitySwitch>().FlipObjectGravity();
         }
         else
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
