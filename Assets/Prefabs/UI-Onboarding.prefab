@@ -172,8 +172,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -588.3, y: 351.76}
-  m_SizeDelta: {x: -1176.596, y: -703.5247}
+  m_AnchoredPosition: {x: -694.26746, y: 392.4439}
+  m_SizeDelta: {x: -1388.5308, y: -784.8925}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4477056925297244549
 CanvasRenderer:
@@ -380,8 +380,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000014067, y: 21}
-  m_SizeDelta: {x: 621.2804, y: 265.6753}
+  m_AnchoredPosition: {x: -0.4847, y: 36.2075}
+  m_SizeDelta: {x: 462.3295, y: 188.0921}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6110183070359845793
 CanvasRenderer:
@@ -438,8 +438,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28
-  m_fontSizeBase: 28
+  m_fontSize: 34
+  m_fontSizeBase: 34
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -596,15 +596,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   instructions:
-  - The aliens have infiltrated the human space station orbiting the planet, determined
-    to fight back and liberate their home. Use the "A" Key to Move Left
-  - and "D" Key to maneuver right through the station's intricate corridors.
-  - 'Press "W'''' to leap over obstacles that lie in their path. Your mission is
-    to guide a resourceful robot ally, a key figure in their resistance, navigating
-    through a maze of challenges to reach the finish line. '
-  - Each alien can manipulate gravity at will, a crucial skill for their mission
-    of liberation. By pressing "Space Bar" players can change gravity's direction,
-    allowing aliens to traverse ceilings and vertical surfaces, bypassing obstacles
-    and evading security measures.
+  - Use the "A & D" Key for Movement.
+  - Press "W'' to Jump.
+  - Use "Space Bar" to Switch Gravity.
   instructionsText: {fileID: 2677607195717191412}
   onboardingPanel: {fileID: 5920624006296493570}
