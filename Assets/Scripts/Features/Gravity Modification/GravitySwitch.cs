@@ -41,10 +41,10 @@ namespace Features.Gravity_Modification
         /// <summary>
         /// Function called to flip the player's gravity.
         /// </summary>
-        private void FlipObjectGravity()
+        public void FlipObjectGravity()
         {
             // Reverse the gravity and scale it up
-            var gravityScale = _rb.gravityScale * 2.0f;
+            var gravityScale = Mathf.Sign(_rb.gravityScale) * 4.0f;
             gravityScale = -gravityScale;
             _rb.gravityScale = gravityScale;
 
