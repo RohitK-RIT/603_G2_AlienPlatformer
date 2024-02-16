@@ -1,7 +1,7 @@
-using System;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
+namespace UI_Scripts
+{
     [RequireComponent(typeof(EdgeCollider2D))]
     public class UI_ScreenTrigger : MonoBehaviour
     {
@@ -13,7 +13,10 @@ using Random = UnityEngine.Random;
 
         private void OnTriggerExit2D(Collider2D other)
         {
-            if (other.gameObject.CompareTag("Player"))
-                UIScreenToTrigger.SetActive(true);
+            if (!other.gameObject.CompareTag("Player")) return;
+            
+            UIScreenToTrigger.SetActive(true);
+            gameObject.SetActive(false);
         }
     }
+}
